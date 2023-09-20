@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.dbribbit.name }}
+spec:
+  replicas: {{ .Values.dbribbit.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{.Values.dbribbit.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.dbribbit.name }}
+    spec:
+      containers:
+        - name: {{ .Values.dbribbit.name }}
+          image: "{{ .Values.dbribbit.image.repository }}:{{ .Values.dbribbit.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.dbribbit.service.targetPort }}

@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.flytrap.name }}
+spec:
+  replicas: {{ .Values.flytrap.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{.Values.flytrap.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.flytrap.name }}
+    spec:
+      containers:
+        - name: {{ .Values.flytrap.name }}
+          image: "{{ .Values.flytrap.image.repository }}:{{ .Values.flytrap.image.tag }}"

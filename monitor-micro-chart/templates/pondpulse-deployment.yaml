@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.pondpulse.name }}
+spec:
+  replicas: {{ .Values.pondpulse.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{.Values.pondpulse.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.pondpulse.name }}
+    spec:
+      containers:
+        - name: {{ .Values.pondpulse.name }}
+          image: "{{ .Values.pondpulse.image.repository }}:{{ .Values.pondpulse.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.pondpulse.service.targetPort }}

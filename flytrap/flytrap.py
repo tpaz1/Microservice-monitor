@@ -10,33 +10,47 @@ logging.getLogger("urllib3").setLevel(logging.WARNING)
 logging.getLogger("requests").setLevel(logging.WARNING)
 
 # URL of the PondPulse microservice
-pondpulse_url = "http://pondpulse:5000/microservices"
+pondpulse_url = "http://pondpulse-service:5000/microservices"
+
+# setting a maximum retry cycles
+max_retries = 3
 
 # Function to check the health of microservices
 def check_microservices_health():
-    try:
-        response = requests.get(pondpulse_url)
-        response.raise_for_status()
-        microservices_data = response.json()
+    retries = 0
+    while retries < max_retries:
+        try:
+            response = requests.get(pondpulse_url)
+            #response.raise_for_status()
+            microservices_data = response.json()
 
-        # Check the state of each microservice
-        for microservice, data in microservices_data.items():
-            if data['state'] == 'healthy':
-                # Simulate detecting a bug
-                if should_detect_bug():
-                    new_state = random.choice(['insecure', 'slow'])
-                    logging.debug(f"Detected bug in {microservice}. Modifying state to {new_state}.")
-                    data['state'] = new_state
-                else:
-                    logging.debug(f"No issues found in {microservice}.")
+            # Check the state of each microservice
+            for microservice, data in microservices_data.items():
+                if data['state'] == 'healthy':
+                    # Simulate detecting a bug
+                    if should_detect_bug():
+                        new_state = random.choice(['insecure', 'slow'])
+                        logging.debug(f"Detected bug in {microservice}. Modifying state to {new_state}.")
+                        data['state'] = new_state
+                    else:
+                        logging.debug(f"No issues found in {microservice}.")
 
-        # Send the updated data back to PondPulse
-        response = requests.post(pondpulse_url + '/update', json=microservices_data)
-        response.raise_for_status()
-        logging.info("Microservices data updated successfully.")
+            # Send the updated data back to PondPulse
+            response = requests.post(pondpulse_url + '/update', json=microservices_data)
+            response.raise_for_status()
+            logging.info("Microservices data updated successfully.")
 
-    except requests.exceptions.RequestException as e:
-        logging.error(f"Error connecting to PondPulse: {str(e)}")
+            break
+
+        except requests.exceptions.RequestException as e:
+            logging.error(f"Error connecting to PondPulse: {str(e)}")
+            retries += 1
+            if retries < max_retries:
+                logging.info(f"Retrying in 10 seconds...")
+                time.sleep(10)
+            else:
+                logging.warning("Max retry attempts reached. Exiting...")
+                break
 
 # Function to simulate bug detection with a low (random) frequency
 def should_detect_bug():
