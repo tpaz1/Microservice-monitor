@@ -3,8 +3,10 @@ kind: Service
 metadata:
   name: {{ .Values.pondpulse.service.name }}
 spec:
+  type: {{ .Values.pondpulse.service.type }}  
   selector:
-    app: {{ .Values.pondpulse.service.name }}
+    app: {{ .Values.pondpulse.name }}
   ports:
     - port: {{ .Values.pondpulse.service.port }}
       targetPort: {{ .Values.pondpulse.service.targetPort }}
+      nodePort: {{ .Values.pondpulse.service.nodePort }}

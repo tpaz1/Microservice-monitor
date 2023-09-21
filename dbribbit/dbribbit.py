@@ -11,11 +11,12 @@ logging.getLogger("requests").setLevel(logging.WARNING)
 
 # URL of the PondPulse microservice
 pondpulse_url = "http://pondpulse-service:5000/microservices"
-#db_user = os.getenv('YOUR_ENV_VARIABLE_NAME')// to implement when deploying to k8s
-#db_pass = os.getenv('YOUR_ENV_VARIABLE_NAME')// to implement when deploying to k8s
+db_user = os.getenv('ME_CONFIG_MONGODB_ADMINUSERNAME') 
+db_pass = os.getenv('ME_CONFIG_MONGODB_ADMINPASSWORD')
+mongo_url = os.getenv('ME_CONFIG_MONGODB_SERVER')
 
 # Initialize a connection to MongoDB
-mongo_client = pymongo.MongoClient("mongodb://root:example@mongo:27017/")  # Replace with your MongoDB connection string
+mongo_client = pymongo.MongoClient("mongodb://admin:admin@mongodb-service:27017/")  # Replace with your MongoDB connection string
 db = mongo_client["faulty_versions_db"]  # Replace with your database name
 collection = db["faulty_versions"]
 

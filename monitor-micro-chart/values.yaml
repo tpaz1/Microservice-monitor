@@ -5,9 +5,11 @@ pondpulse:
     repository: tpaz1/pondpulse
     tag: latest
   service:
+    type: NodePort
     name: pondpulse-service
     port: 5000
     targetPort: 5000
+    nodePort: 30001
 
 flytrap:
   name: flytrap

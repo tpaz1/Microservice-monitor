@@ -15,5 +15,19 @@ spec:
       containers:
         - name: {{ .Values.dbribbit.name }}
           image: "{{ .Values.dbribbit.image.repository }}:{{ .Values.dbribbit.image.tag }}"
-          ports:
-            - containerPort: {{ .Values.dbribbit.service.targetPort }}
+          env:
+          - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mongodb-secret
+                key: mongo-root-username 
+          - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mongodb-secret
+                key: mongo-root-password
+          - name: ME_CONFIG_MONGODB_SERVER    
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: database-url
