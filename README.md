@@ -18,7 +18,6 @@ This project is a microservices monitoring solution designed to ensure the smoot
 
 ## Architecture
 ![Screenshot](images/Architecture.png)
-![alt text]()
 
 ## Table of Contents
 
