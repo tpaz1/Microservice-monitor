@@ -17,6 +17,7 @@ This project is a microservices monitoring solution designed to ensure the smoot
 - **DBRibbit**: A component that periodically polls PondPulse and persists faulty versions to a MongoDB database.
 
 ## Architecture
+![Screenshot](images/Architecture.png)
 ![alt text]()
 
 ## Table of Contents
