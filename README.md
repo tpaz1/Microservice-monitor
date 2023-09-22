@@ -43,6 +43,7 @@ Before you begin, ensure you have met the following requirements:
 - A Kubernetes cluster set up (for deploying with Helm)
 -  `kubectl` [installed](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - Helm [installed](https://helm.sh/docs/intro/install/) (for deploying with Helm)
+- Git [Installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 ### Installation
 
