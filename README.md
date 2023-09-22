@@ -1,10 +1,21 @@
 # Microservices Monitoring Solution
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Architecture](#architecture)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Monitoring and Management](#monitoring-and-management)
+  - [Deployment strategy](#deployment-strategy)
+- [Contributing](#contributing)
+
 ## Overview
 
 This project is a microservices monitoring solution designed to ensure the smooth operation, uptime, security, and performance of a set of microservices within a SaaS platform. It consists of several components, each serving a specific purpose:
 
-- **PondPulse**: A stateless application that generates increnemted application version and exposes metadata for the microservices. the scheme looks like this
+- **PondPulse**: A stateless application that generates increnemted application version and exposes metadata for the microservices. the scheme is built as the following
   ```bash
   {
   "Frog1": {
@@ -22,14 +33,6 @@ This project is a microservices monitoring solution designed to ensure the smoot
 ## Architecture
 ![Screenshot](images/Architecture.png)
 
-## Table of Contents
-
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Monitoring and Management](#monitoring-and-management)
-  - [Deployment strategy](#deployment-strategy)
-- [Contributing](#contributing)
 
 ## Getting Started
 
