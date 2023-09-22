@@ -51,7 +51,7 @@ Before you begin, ensure you have met the following requirements:
 - PondPulse: Access PondPulse's CRUD REST APIs to retrieve information about the microservices. For example:
 ```bash
 curl http://pondpulse-service/microservices
-
+```
 - FlyTrap: FlyTrap automatically detects performance and security issues and communicates with PondPulse to modify the state of the microservices. You can check the logs of the pod running flytrap to see if it detected any issue with one of the microservices - the interval for checking for errors is 60 seconds.
 ```bash
 kubectl logs -f -l app=flytrap
