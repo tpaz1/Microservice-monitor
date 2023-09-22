@@ -73,7 +73,7 @@ kubectl logs -f -l app=dbribbit
 
   
 ### Deployment Strategy
-For the deployment - I decided to implement the `helm` subchart strategy which is a strategy where you can manage and deploy multiple dependent charts within single `helm chart` - where you can deploy them as a single unit.
+For the deployment - I decided to implement the `Helm` subchart strategy in which you can manage and deploy multiple dependent charts within a single `helm chart` - where you can deploy them as a single unit.
 ```bash
 .
 ├── charts
