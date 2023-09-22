@@ -47,7 +47,7 @@ Before you begin, ensure you have met the following requirements:
 2. **Running the Microservices**
 
    ```bash
-   helm install monitor-stack ./monitor-micro-chart
+   helm install frog-chart ./deploy
 
 ### Monitoring and Management
 - PondPulse: Access PondPulse's CRUD REST APIs to retrieve information about the microservices. For example:
