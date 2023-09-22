@@ -28,7 +28,7 @@ This project is a microservices monitoring solution designed to ensure the smoot
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Monitoring and Management](#monitoring-and-management)
-  - [Deployment strategy](deployment-strategy)
+  - [Deployment strategy](#deployment-strategy)
 - [Contributing](#contributing)
 
 ## Getting Started
