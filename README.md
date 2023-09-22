@@ -52,7 +52,7 @@ Before you begin, ensure you have met the following requirements:
 ### Monitoring and Management
 - PondPulse: Access PondPulse's CRUD REST APIs to retrieve information about the microservices. For example:
 ```bash
-curl http://pondpulse-service/microservices
+curl http://node-ip:30001/microservices
 ```
 
 - FlyTrap: FlyTrap automatically detects performance and security issues and communicates with PondPulse to modify the state of the microservices. You can check the logs of the pod running flytrap to see if it detected any issue with one of the microservices - the interval for checking for errors is 60 seconds.
