@@ -1,5 +1,3 @@
-# Microservice-monitor
-
 # Microservices Monitoring Solution
 
 ## Overview
@@ -52,13 +50,16 @@ Before you begin, ensure you have met the following requirements:
 ```bash
 curl http://pondpulse-service/microservices
 ```
+
 - FlyTrap: FlyTrap automatically detects performance and security issues and communicates with PondPulse to modify the state of the microservices. You can check the logs of the pod running flytrap to see if it detected any issue with one of the microservices - the interval for checking for errors is 60 seconds.
 ```bash
 kubectl logs -f -l app=flytrap
+```
 
 - BRibbit: DBRibbit polls PondPulse periodically and persists faulty versions to a MongoDB database. You can check the logs of the pod running dbribbit to see if it updated some document in the DB.
 ```bash
 kubectl logs -f -l app=dbribbit
+```
 
 ### Contributing
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and create a pull request.
