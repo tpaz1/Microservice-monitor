@@ -12,6 +12,10 @@ spec:
       labels:
         app: {{ .Values.flytrap.name }}
     spec:
+      initContainers:
+        - name: init-sleep
+          image: busybox   # lightweight image
+          command: ["sleep", "60"]
       containers:
         - name: {{ .Values.flytrap.name }}
           image: "{{ .Values.flytrap.image.repository }}:{{ .Values.flytrap.image.tag }}"

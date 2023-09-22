@@ -12,6 +12,10 @@ spec:
       labels:
         app: {{ .Values.dbribbit.name }}
     spec:
+      initContainers:
+        - name: init-sleep
+          image: busybox   # lightweight image
+          command: ["sleep", "60"]
       containers:
         - name: {{ .Values.dbribbit.name }}
           image: "{{ .Values.dbribbit.image.repository }}:{{ .Values.dbribbit.image.tag }}"

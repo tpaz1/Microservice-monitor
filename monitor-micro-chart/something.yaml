@@ -28,6 +28,10 @@ spec:
       labels:
         app: dbribbit
     spec:
+      initContainers:
+        - name: init-sleep
+          image: busybox   # lightweight image
+          command: ["sleep", "60"]
       containers:
         - name: dbribbit
           image: "tpaz1/dbribbit:latest"
@@ -63,6 +67,10 @@ spec:
       labels:
         app: flytrap
     spec:
+      initContainers:
+        - name: init-sleep
+          image: busybox   # lightweight image
+          command: ["sleep", "60"]
       containers:
         - name: flytrap
           image: "tpaz1/flytrap:latest"

@@ -23,9 +23,6 @@ def generate_microservice_data():
     for microservice in microservices_data:
         # Randomly increment the version
         microservices_data[microservice]['version'] += random.randint(1, 3)
-        # Randomly select the state
-        #states = ['healthy', 'insecure', 'slow']
-        #microservices_data[microservice]['state'] = random.choice(states)
     return microservices_data
 
 # Function to update microservice data

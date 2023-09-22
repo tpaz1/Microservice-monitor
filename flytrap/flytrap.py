@@ -26,14 +26,13 @@ def check_microservices_health():
 
             # Check the state of each microservice
             for microservice, data in microservices_data.items():
-                if data['state'] == 'healthy':
-                    # Simulate detecting a bug
-                    if should_detect_bug():
-                        new_state = random.choice(['insecure', 'slow'])
-                        logging.debug(f"Detected bug in {microservice}. Modifying state to {new_state}.")
-                        data['state'] = new_state
-                    else:
-                        logging.debug(f"No issues found in {microservice}.")
+                # Simulate detecting a bug
+                if should_detect_bug():
+                    new_state = random.choice(['insecure', 'slow', 'healthy'])
+                    logging.debug(f"Detected bug in {microservice}. Modifying state to {new_state}.")
+                    data['state'] = new_state
+                else:
+                    logging.debug(f"No issues found in {microservice}.")
 
             # Send the updated data back to PondPulse
             response = requests.post(pondpulse_url + '/update', json=microservices_data)
@@ -54,7 +53,7 @@ def check_microservices_health():
 
 # Function to simulate bug detection with a low (random) frequency
 def should_detect_bug():
-    return random.random() < 0.1  # Adjust the frequency as needed
+    return random.random() < 0.25  # Adjust the frequency as needed
 
 if __name__ == '__main__':
     while True:
