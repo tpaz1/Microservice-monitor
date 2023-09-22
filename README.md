@@ -11,7 +11,7 @@ This project is a microservices monitoring solution designed to ensure the smoot
     "state": "slow",
     "version": 20 ## will change on each get request
   }
-```
+  ```
 - **FlyTrap**: A service that detects performance and security issues in the microservices and communicates with PondPulse to modify their state to ['insecure', 'slow', 'healthy'].
 
 - **DBRibbit**: A component that periodically polls PondPulse and persists faulty versions to a MongoDB database.
