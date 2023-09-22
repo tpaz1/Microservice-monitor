@@ -4,20 +4,20 @@
 
 This project is a microservices monitoring solution designed to ensure the smooth operation, uptime, security, and performance of a set of microservices within a SaaS platform. It consists of several components, each serving a specific purpose:
 
-- **PondPulse**: A stateless application that generates increnemted application ![Alt text](Architecture.png)version and exposes metadata for the microservices. the scheme looks like this
+- **PondPulse**: A stateless application that generates increnemted application version and exposes metadata for the microservices. the scheme looks like this
   ```bash
   {
   "Frog1": {
     "state": "slow",
     "version": 20 ## will change on each get request
   }
-```
+  ```
 - **FlyTrap**: A service that detects performance and security issues in the microservices and communicates with PondPulse to modify their state to ['insecure', 'slow', 'healthy'].
 
 - **DBRibbit**: A component that periodically polls PondPulse and persists faulty versions to a MongoDB database.
 
 ## Architecture
-![alt text]()
+![Screenshot](images/Architecture.png)
 
 ## Table of Contents
 
@@ -52,7 +52,7 @@ Before you begin, ensure you have met the following requirements:
 ### Monitoring and Management
 - PondPulse: Access PondPulse's CRUD REST APIs to retrieve information about the microservices. For example:
 ```bash
-curl http://pondpulse-service/microservices
+curl http://node-ip:30001/microservices
 ```
 
 - FlyTrap: FlyTrap automatically detects performance and security issues and communicates with PondPulse to modify the state of the microservices. You can check the logs of the pod running flytrap to see if it detected any issue with one of the microservices - the interval for checking for errors is 60 seconds.
