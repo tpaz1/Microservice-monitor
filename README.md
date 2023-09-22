@@ -106,3 +106,5 @@ For the deployment - I decided to implement the `Helm` subchart strategy in whic
 ```
 ### Contributing
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and create a pull request.
+
+Source code is located under the src directory and each microservice has its own Dockerfile respectively
