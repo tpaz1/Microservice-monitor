@@ -1,0 +1,26 @@
+pondpulse:
+  name: pondpulse
+  replicaCount: 1
+  image:
+    repository: tpaz1/pondpulse
+    tag: latest
+  service:
+    type: NodePort
+    name: pondpulse-service
+    port: 5000
+    targetPort: 5000
+    nodePort: 30001
+
+flytrap:
+  name: flytrap
+  replicaCount: 1
+  image:
+    repository: tpaz1/flytrap
+    tag: latest
+
+dbribbit:
+  name: dbribbit
+  replicaCount: 1
+  image:
+    repository: tpaz1/dbribbit
+    tag: latest

@@ -1,26 +1,56 @@
-pondpulse:
-  name: pondpulse
-  replicaCount: 1
-  image:
-    repository: tpaz1/pondpulse
-    tag: latest
+microservices:
+  pondpulse:
+    name: pondpulse
+    replicaCount: 1
+    image:
+      repository: tpaz1/pondpulse
+      tag: latest
+    service:
+      type: NodePort
+      name: pondpulse-service
+      port: 5000
+      targetPort: 5000
+      nodePort: 30001
+
+  flytrap:
+    name: flytrap
+    replicaCount: 1
+    image:
+      repository: tpaz1/flytrap
+      tag: latest
+  
+  dbribbit:
+    name: dbribbit
+    replicaCount: 1
+    image:
+      repository: tpaz1/dbribbit
+      tag: latest
+
+mongo-app:
+  mongodb:
+    deployment:
+      name: mongodb
+      replicas: 1
+      image: mongo
+      containerPort: 27017
+    service:
+      name: mongodb-service
+      port: 27017
+      targetPort: 27017
+    secret:
+      name: mongodb-secret
+    configmap:
+      name: mongo-config
+
+mongo-exp:
+  deployment:
+    name: mongo-exp
+    image: mongo-express
+    replicas: 1
+    containerPort: 8081
   service:
+    name: mongo-exp-service
     type: NodePort
-    name: pondpulse-service
-    port: 5000
-    targetPort: 5000
-    nodePort: 30001
-
-flytrap:
-  name: flytrap
-  replicaCount: 1
-  image:
-    repository: tpaz1/flytrap
-    tag: latest
-
-dbribbit:
-  name: dbribbit
-  replicaCount: 1
-  image:
-    repository: tpaz1/dbribbit
-    tag: latest
+    port: 8081
+    targetPort: 8081
+    nodePort: 30000
