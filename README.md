@@ -104,6 +104,11 @@ For the deployment - I decided to implement the `Helm` subchart strategy in whic
 ├── template.yaml
 └── values.yaml
 ```
+
+### Notes
+* Considering the fact that there is time between the creation of resources and when Microservices are up and running (due to the time is takes to pull the container images), I have decided to implement an `InitContainer` for both `flytrap` and `DBribbit` microservices. The reason for that is because they are dependent on the `pondpulse` microservice, and its better for them to run only when `pondpulse` is up and running.
+That way, the application starts to run right away when all pods are fully available.
+ 
 ### Contributing
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and create a pull request.
 
