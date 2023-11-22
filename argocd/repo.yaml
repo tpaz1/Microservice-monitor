@@ -1,0 +1,10 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Repository
+metadata:
+  namespace: argocd
+  name: microservicerepo
+spec:
+  url: https://github.com/tpaz1/Microservice-monitor.git
+  connectionMethod:
+    insecure: true
+
